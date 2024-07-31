@@ -10,6 +10,9 @@ import TheWelcome from './components/TheWelcome.vue'
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
     </div>
+    <div class="w-32 h-32 bg-blue-500">
+      <p>守护最好的tailwind</p>
+    </div>
   </header>
 
   <main>
