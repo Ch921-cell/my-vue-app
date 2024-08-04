@@ -8,6 +8,7 @@
   "main": "electron/electronMain.cjs",
   "scripts": {
     "dev": "vite",
+    "dev:electron":"electron .",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",

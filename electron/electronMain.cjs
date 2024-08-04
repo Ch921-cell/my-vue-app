@@ -2,14 +2,31 @@
  * electron 的主进程
  */
 // 导入模块
-const { app, BrowserWindow  } = require('electron')
+const { app, BrowserWindow ,ipcMain} = require('electron')
+const path = require('path')
+const fs = require('fs')
+
+function writeFile(envent,data){
+  fs.writeFileSync('D:/hello.txt',data)
+}
+
+function readFile() {
+  const res = fs.readFileSync("D:/hello.txt").toString()
+  return res
+}
 
 // 创建主窗口
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences:{
+      preload:path.resolve(__dirname,'./preload.js')  //需要是绝对路径
+    },
   })
+  ipcMain.on('file-save',writeFile)
+  ipcMain.handle('file-read', readFile)
+
   // 加载当前vue 的地址
   win.loadURL('http://localhost:5173')
 
